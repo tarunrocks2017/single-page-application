@@ -30,7 +30,7 @@ async function getActorById(id) {
   const connection = await con.getConnection();
   const format = await connection.format('select * from actors where actorid = ?', [id]);
   const result = await connection.query(format);
-  const option = await getMovieOption(result[0].actorid);
+  const option = await getMovieOption();
   result[0].option = option;
   return result;
 }

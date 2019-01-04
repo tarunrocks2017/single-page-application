@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $.ajax({
   url: '/getOptions',
   method: 'post',
@@ -6,6 +7,9 @@ $.ajax({
       const options = `<option value=${element.movieid}>${element.moviename}</option>`;
       $('#moviename').append(options);
     });
+  },
+  error: (err) => {
+    alert(err);
   },
 });
 $('#addActor').click((e) => {
@@ -24,6 +28,9 @@ $('#addActor').click((e) => {
       if (data !== false) {
         window.location.href = '/Actors.html';
       }
+    },
+    error: (err) => {
+      alert(err);
     },
 
   });

@@ -13,6 +13,9 @@ $.ajax({
     $('#actorname').val(data[0].actorname);
     $('#desc').val(data[0].description);
   },
+  error: (err) => {
+    alert(err);
+  },
 });
 $(document).ready(() => {
   $('#updateActor').click((e) => {
@@ -33,8 +36,10 @@ $(document).ready(() => {
           window.location.href = '/Actors.html';
         }
       },
+      error: (err) => {
+        alert(err);
+      },
 
     });
   });
 });
-

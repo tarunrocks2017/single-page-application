@@ -14,6 +14,8 @@ describe('MovieController', () => {
       releaseYear: 2017,
     };
     const result = await controller.addMovie(item);
+    // eslint-disable-next-line no-unused-vars
+    const result2 = await controller.addMovie(item);
     const expected = 1;
     Expect(result.affectedRows).equal(expected);
   });
@@ -34,7 +36,7 @@ describe('MovieController', () => {
   });
 
   it('should delete the row from movie table', async () => {
-    const result = await controller.removeMovieById();
+    const result = await controller.removeMovieById(2);
     const expected = 1;
     Expect(result.affectedRows).equal(expected);
   });
@@ -43,12 +45,11 @@ describe('MovieController', () => {
     const result = await controller.getMovies();
     const expected = [{
       movieid: 1,
-      moviename: 'krish3',
-      status: 'superhit',
+      moviename: 'homeland2',
+      status: 'flop',
       image_url: 'image.jpg',
-      actorname: 'tarun',
-      description: 'this movies is great',
-      releaseYear: 2019,
+      actorname: 'hritik',
+      releaseYear: 2018,
     }];
     Expect(expected).eql(result);
   });
@@ -57,12 +58,12 @@ describe('MovieController', () => {
     const result = await controller.getMovieById(1);
     const expected = [{
       movieid: 1,
-      moviename: 'krish3',
-      status: 'superhit',
+      moviename: 'homeland2',
+      status: 'flop',
       image_url: 'image.jpg',
-      actorname: 'tarun',
-      description: 'this movies is great',
-      releaseYear: 2019,
+      actorname: 'hritik',
+      description: 'this is good movie to see',
+      releaseYear: 2018,
     }];
     Expect(expected).eql(result);
   });

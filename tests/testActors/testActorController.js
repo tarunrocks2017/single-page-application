@@ -15,6 +15,8 @@ describe('actorData', () => {
     };
     try {
       const result = await controller.addActor(item);
+      // eslint-disable-next-line no-unused-vars
+      const result2 = await controller.addActor(item);
       const expected = 1;
       Expect(result.affectedRows).equal(expected);
     } catch (error) {
@@ -26,6 +28,7 @@ describe('actorData', () => {
     const item = {
       actorname: 'vishnu',
       moviename: 'krish3',
+      movieid: 1,
       activeYear: '2018-2019',
       image_url: 'vishnu.jpg',
       totalmovies: 123,
@@ -41,7 +44,7 @@ describe('actorData', () => {
 
   it('should delete row from actor table', async () => {
     try {
-      const result = await controller.removeActorById(32);
+      const result = await controller.removeActorById(2);
       const expected = 1;
       Expect(result.affectedRows).equal(expected);
     } catch (error) {
@@ -53,12 +56,13 @@ describe('actorData', () => {
     try {
       const result = await controller.getActors();
       const expected = [{
-        moviename: 'krish3',
+        moviename: 'homeland2',
         movieid: 1,
         actorname: 'vishnu',
         activeYear: '2018-2019',
         image_url: 'vishnu.jpg',
         actorid: 1,
+        totalmovies: 123,
       }];
       Expect(result).eql(expected);
     } catch (error) {
@@ -71,14 +75,14 @@ describe('actorData', () => {
       option: [
         {
           movieid: 1,
-          moviename: 'krish3',
+          moviename: 'homeland2',
         }],
       movieid: 1,
       actorid: 1,
       actorname: 'vishnu',
       activeYear: '2018-2019',
       image_url: 'vishnu.jpg',
-      totalmovies: null,
+      totalmovies: 123,
     }];
     Expect(result).eql(expected);
   });

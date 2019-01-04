@@ -17,7 +17,7 @@ router.post('/deleteMovie', async (req, res) => {
     if (deletedRow.affectedRows > 0) {
       res.json(true);
     } else {
-      res.sendStatus(500);
+      res.json(500);
     }
   } catch (error) {
     res.send(error);
@@ -69,7 +69,7 @@ router.post('/updateMovie', async (req, res) => {
       const result = await controller.getNewlyAddedMovie(req.body.moviename);
       res.json(result);
     } else {
-      res.send(false);
+      res.json(false);
     }
   } catch (error) {
     throw error;

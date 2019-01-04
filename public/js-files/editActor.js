@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $.ajax({
   url: '/editActor',
   method: 'post',
@@ -13,6 +14,9 @@ $.ajax({
       const options = `<option value=${element.movieid}>${element.moviename}</option>`;
       $('#moviename').append(options);
     });
+  },
+  error: (err) => {
+    alert(err);
   },
 });
 $(document).ready(() => {
@@ -34,7 +38,9 @@ $(document).ready(() => {
           window.location.href = '/Actors.html';
         }
       },
-
+      error: (err) => {
+        alert(err);
+      },
     });
   });
 });

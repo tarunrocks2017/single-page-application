@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $('#addMovie').click((e) => {
   e.preventDefault();
   $.ajax({
@@ -16,6 +17,8 @@ $('#addMovie').click((e) => {
         window.location.href = '/movies.html';
       }
     },
-
+    error: (err) => {
+      alert(err);
+    },
   });
 });

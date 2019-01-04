@@ -11,11 +11,20 @@ describe('actorRoutes', () => {
   });
 
   it('should render update data', (done) => {
+    const item = {
+      actorname: 'tarun',
+      movieid: 1,
+      activeYear: '2018-2019',
+      image_url: 'image.jpg',
+      totalmovies: 123,
+    };
     request('http://localhost:8080')
       .get('/actors')
       .set('Accept', 'application/json')
+      .set('id', 1)
+      .set('actorObject', item)
       .expect('Content-Type', /json/)
-      .expect(/true/, done);
+      .expect(/Hritik/, done);
   });
 
   it('should render delete the item', (done) => {
@@ -23,6 +32,6 @@ describe('actorRoutes', () => {
       .get('/actors')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(/false/, done);
+      .expect(/homeland2/, done);
   });
 });
