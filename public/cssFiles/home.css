@@ -1,0 +1,64 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  border-bottom: 2px solid #323256;
+}
+
+header .navbar {
+  background-color: #0d3154;
+}
+
+header .navbar .nav-link, header .navbar .navbar-brand {
+  color: white;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  height: 90vh;
+  position: relative;
+}
+
+.container-fluid img {
+  height: 100%;
+  width: 100%;
+}
+
+.container-fluid .welcome-page-image {
+  height: 100%;
+  width: 100%;
+}
+
+.container-fluid .welcome-page-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.container-fluid .welcome-message-div {
+  height: 40vh;
+  width: 50%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.container-fluid .welcome-message {
+  height: 40vh;
+  width: 50%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  color: white;
+  padding: 5%;
+}
+
+.container-fluid .welcome-message h2 {
+  margin: 20px;
+}
+/*# sourceMappingURL=home.css.map */
