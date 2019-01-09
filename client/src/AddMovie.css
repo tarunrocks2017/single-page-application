@@ -1,0 +1,62 @@
+body, html {
+    height: 100%;
+  }
+  
+  header {
+    border-bottom: 2px solid #323256;
+  }
+  
+  header .navbar {
+    background-color: #0d3154;
+  }
+  
+  header .navbar .nav-link, header .navbar .navbar-brand {
+    color: white;
+  }
+  
+  .container-fluid {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    position: relative;
+  }
+  
+  .container-fluid img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .form-div {
+    position: absolute;
+    top: 5%;
+    left: 20%;
+    width: 60%;
+    height: 80vh;
+    border: 1px solid black;
+    padding: 20px;
+  }
+  
+  .opacity {
+    opacity: 0.5;
+    background-color: black;
+  }
+  
+  .add-movie-form {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  
+  .form-group {
+    width: 45%;
+    margin: 3% 2%;
+    position: relative;
+  }
+  
+  .form-group button {
+    height: 40px;
+    width: 50%;
+    position: absolute;
+    top: 30px;
+    left: 20%;
+  }
+  /*# sourceMappingURL=AddMovie.css.map */

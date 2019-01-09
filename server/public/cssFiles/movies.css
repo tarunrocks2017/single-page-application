@@ -1,0 +1,129 @@
+body, html {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+header {
+  border-bottom: 2px solid #323256;
+}
+
+header .navbar {
+  background-color: #0d3154;
+}
+
+header .navbar .nav-link, header .navbar .navbar-brand {
+  color: white;
+}
+
+.container-fluid {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border: 1px solid black;
+  height: auto;
+  padding: 0;
+}
+
+.movie-operation {
+  height: 100%;
+  width: 15%;
+}
+
+.movie-operation-list {
+  width: 100%;
+  height: 15%;
+  list-style: none;
+  padding: 5px;
+  color: #0d3154;
+}
+
+.movie-operation-list a {
+  text-decoration: none;
+  color: #0d3154;
+}
+
+.movie-operation-list li {
+  height: 50%;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  text-anchor: middle;
+  border-bottom: 1px solid #e2d8d8;
+}
+
+.movie-list-container {
+  height: 100%;
+  width: 85%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 0;
+  border-left: 2px solid #0d3154;
+}
+
+.list-heading {
+  height: 8%;
+  width: 100%;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.list-heading ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  width: 100%;
+  padding-left: 0;
+}
+
+.list-heading ul li {
+  display: block;
+  width: 17%;
+  text-align: center;
+}
+
+.content-list {
+  height: 95%;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.data-container {
+  height: 150px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.data-container .content-image {
+  height: 100%;
+  width: 20%;
+  padding: 5px;
+}
+
+.data-container .content-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.data-container .content-info {
+  width: 16%;
+  height: 100%;
+}
+
+.data-container .content-info h5 {
+  margin: 25%;
+}
+
+.data-container .edit-button {
+  margin-left: 25px;
+}
+
+.data-container .delete-button {
+  margin: 25px;
+}
+/*# sourceMappingURL=movies.css.map */

@@ -1,0 +1,69 @@
+body, html {
+    height: 100%;
+  }
+  
+  header {
+    border-bottom: 2px solid #323256;
+  }
+  
+  header .navbar {
+    background-color: #0d3154;
+  }
+  
+  header .navbar .nav-link, header .navbar .navbar-brand {
+    color: white;
+  }
+  
+  .container-fluid {
+    height: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    position: relative;
+  }
+  
+  .bg-actor-form {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .bg-actor-form img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .actor-form {
+    width: 60%;
+    height: 80%;
+    position: absolute;
+    top: 50px;
+    left: 20%;
+  }
+  
+  .opacity {
+    background-color: black;
+    opacity: 0.5;
+  }
+  
+  .add-movie-form {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  
+  .form-group {
+    width: 45%;
+    margin: 3% 2%;
+    position: relative;
+  }
+  
+  .form-group button {
+    height: 40px;
+    width: 50%;
+    position: absolute;
+    top: 30px;
+    left: 20%;
+  }
+  
+  .form-group label {
+    color: white;
+  }
+  /*# sourceMappingURL=addActor.css.map */
