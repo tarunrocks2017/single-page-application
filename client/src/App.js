@@ -7,71 +7,56 @@ import ActorContent from './components /actor';
 import AddMovieForm from './components /AddMovieForm';
 import AddActorForm from './components /AddActorForm';
 import NavigationHeader from './components /header';
-import Redirect from 'react-router-dom/Redirect';
+import EditActorForm from './components /editActor';
+import EditMovieForm from './components /editMovie';  
+//import Redirect from 'react-router-dom/Redirect';
 import './App.css';
+import {connect} from 'react-redux';
+import {getActors, getMovies} from './Store/ReduxActions/actions';
+
 
 class App extends Component {
 
-  constructor(props){
-    super();
-    this.state={
-      actors:[],
-      movies:[],
-      redirect:false,
-    }
-    this.getActorData = this.getActorData.bind(this);
-    this.addMovies = this.addMovies.bind(this);
-    this.addActor = this.addActor.bind(this);
-    console.log("i am here");
-  }
-  async componentDidMount() {
-    const url = "http://localhost:8080/movies";
-    const response = await fetch(url);
-    const result = await response.json();
-    this.setState({
-      movies: result
-    });
+   async componentDidMount(){
+     await this.props.getActors();
+     await this.props.getMovies();
 
-    const urlActor = "http://localhost:8080/actors";
-    const Actorresponse = await fetch(urlActor);
-    const Actorresult = await Actorresponse.json();
-    this.setState({
-      actors: Actorresult
-    });
-   }
+    console.log("i am mounting ");
+    console.log(this.props.state);
+}
 
-  getActorData(data){
-    this.setState({
-      actors:data,
-    });
-    console.log(data);
-  }
 
-  addMovies(movie){
-    const {movies} = this.state ;
-    movies.push(movie); 
-  }
-
-  addActor(actor){
-    const {actors} = this.state ;
-    actors.push(actor);
-  }
   render() {
-   
+    console.log(this.props.movies);
     return (
       <Router>
         <div className="myApp">
           <NavigationHeader />
           <Switch>
           <Route path="/" component={HomeContent} exact />
-          <Route path="/movies" render={(routeProps) => ( <MovieContent stateMovies={this.state.movies} /> )} exact/>
-          <Route path="/actors" render={(routeProps) => ( <ActorContent stateActors={this.state.actors} method={this.getActorData} /> )} exact/>
-          <Route path="/actors/addActor" render={(routeProps) => (<AddActorForm  method={this.addActor} movieOptions={this.state.movies} /> )} />
-          <Route path="/movies/addMovies" render={(routeProps) => (this.state.redirect ? (<Redirect to="/movies" />) : (<AddMovieForm method={this.addMovies} />)) } />
+          <Route path="/movies" component={MovieContent} exact/>
+          <Route path="/actors" component={ActorContent} exact/>
+          <Route path="/actors/addActor" component={AddActorForm} />
+          <Route path="/movies/addMovies" component={AddMovieForm} />
+          <Route path="/actors/edit/:id" component={EditActorForm} actor={this.props.actors}/>
+          <Route path="/movies/edit/:id" component={EditMovieForm} movie={this.props.movies}/>
           </Switch>
         </div>
       </Router>
     ) 
   }
 }
-export default App
+const mapStateProps = (state) => {
+  console.log("in mapstate app.js");
+ console.log("state of movies"+state);
+  return {
+      state:state,
+      actors:state.actors,
+      movies:state.movies
+  }
+}
+
+const mapdispatchtoProps =  {getActors,getMovies};
+console.log("first connect");
+
+export default connect(mapStateProps,mapdispatchtoProps)(App);

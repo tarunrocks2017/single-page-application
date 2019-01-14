@@ -7,6 +7,9 @@ const INSERT_INTO_ACTOR = 'insert into actors(actorname,movieid,activeYear,image
 
 const UPDATE_INTO_ACTOR = 'update actors set actorname=?,movieid=?,activeYear=?,image_url=?,totalmovies=? where actorid= ?';
 
+const GET_NEW_ACTOR = `select m.moviename , m.movieid , actorid, ac.actorname , activeYear , ac.image_url
+, totalmovies from actors ac inner join movies m on m.movieid = ac.movieid where ac.actorname = ?`;
+
 async function getActors() {
   try {
     const connection = await con.getConnection();
@@ -37,7 +40,7 @@ async function getActorById(id) {
 async function getNewlyAddedActor(actorname) {
   try {
     const connection = await con.getConnection();
-    const format = await connection.format('select * from actors where actorname= ?', [actorname]);
+    const format = await connection.format(GET_NEW_ACTOR, [actorname]);
     const result = await connection.query(format);
     return result;
   } catch (error) {
@@ -59,6 +62,7 @@ async function removeActorById(id) {
 
 async function addActor(actorObject) {
   try {
+    console.log('now here also request come');
     const connection = await con.getConnection();
     const actorInfo = [
       actorObject.actorname,
@@ -69,8 +73,10 @@ async function addActor(actorObject) {
     ];
     const formatQuery = await connection.format(INSERT_INTO_ACTOR, actorInfo);
     const result = await connection.query(formatQuery);
+    console.log(result);
     return result;
   } catch (error) {
+    console.log('in catch block');
     return error;
   }
 }
@@ -78,7 +84,7 @@ async function addActor(actorObject) {
 async function updateActorById(id, actorObject) {
   try {
     const connection = await con.getConnection();
-
+    console.log('try in update');
     const actorInfo = [
       actorObject.actorname,
       actorObject.movieid,
@@ -91,6 +97,8 @@ async function updateActorById(id, actorObject) {
     const result = await connection.query(formatQuery);
     return result;
   } catch (error) {
+    console.log('catch in update');
+    console.log(error);
     return error;
   }
 }

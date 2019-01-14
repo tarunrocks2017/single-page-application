@@ -11,9 +11,10 @@ router.get('/movies', async (req, res) => {
   }
 });
 
-router.post('/deleteMovie', async (req, res) => {
+router.get('/deleteMovie/:id', async (req, res) => {
+  console.log('request for delete');
   try {
-    const deletedRow = await controller.removeMovieById(req.body.id);
+    const deletedRow = await controller.removeMovieById(req.params.id);
     if (deletedRow.affectedRows > 0) {
       res.json(true);
     } else {
@@ -54,11 +55,11 @@ router.post('/editMovie', async (req, res) => {
   }
 });
 
-router.post('/updateMovie', async (req, res) => {
+router.put('/updateMovie', async (req, res) => {
   const movie = {
     moviename: req.body.moviename,
     status: req.body.status,
-    image_url: req.body.image,
+    image_url: req.body.image_url,
     actorname: req.body.actorname,
     description: req.body.description,
     releaseYear: req.body.releaseYear,

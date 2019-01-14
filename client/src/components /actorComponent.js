@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const ActorComponent = (props) => {
     return (
@@ -17,6 +18,10 @@ const ActorComponent = (props) => {
             </div>
             <div className="content-info">
                 <h5>{props.actorObj.totalmovies}</h5>
+            </div>
+            <div class='content-info'>
+            <Link to={`/actors/edit/${props.actorObj.actorid}`} ><button class='edit-button btn btn-primary' name={props.actorObj.actorid} >EDIT</button></Link>
+                <button class='delete-button btn' id={props.actorObj.actorid} onClick={props.deleteMethod}>DELETE</button>
             </div>
         </div>
     )

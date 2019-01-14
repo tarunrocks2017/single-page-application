@@ -3,10 +3,34 @@ import WebFooter from '../components /footer';
 import '../../src/actor.css';
 import ActorComponent from './actorComponent';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {deleteActor, editActor} from '../Store/ReduxActions/actions';
 
 class ActorContent extends React.Component {
     
+    constructor(props) {
+        super(props);
+        this.state= {
+            actorElement:[]
+        }
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+    }
+
+    handleDelete(e) {
+        const id = e.target.id ;
+        this.props.deleteActor(id);
+    }
+
+    handleEdit(e) {
+        const id = e.target.id ;
+        const element = this.props.actor.filter(actor => actor.actorid === id);
+        this.setState({
+            actorElement:element
+        })
+    }
     render() {
+        console.log("in render");
         return (
             <div>
                 <section className="container-fluid d-flex">
@@ -27,8 +51,8 @@ class ActorContent extends React.Component {
                     </div>
                     <div className="content-list d-flex">
                     {
-                        this.props.stateActors.map((actor) => {
-                            return <ActorComponent actorObj= {actor} />
+                        this.props.actors.map((actor) => {
+                            return <ActorComponent actorObj= {actor} deleteMethod={this.handleDelete} editMethod={this.handleEdit}/>
                         })
                     }
                         
@@ -41,4 +65,14 @@ class ActorContent extends React.Component {
         )
     }
 }
-export default ActorContent;
+const mapActorStateProps = (state) => {
+    console.log("i come inside again");
+    console.log(state);
+    return {
+        actors:state.actors,
+        movies:state.movies,
+    }
+}
+const mapDispatchToProps = {deleteActor,editActor};
+
+export default connect(mapActorStateProps,mapDispatchToProps)(ActorContent);

@@ -3,8 +3,21 @@ import WebFooter from '../components /footer';
 import '../../src/actor.css';
 import MovieComponent from './movieComponent';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {deleteMovie} from '../Store/ReduxActions/actions';
 
 class movieContent extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+  
+    handleDelete(e) {
+        const id = e.target.id ;
+        this.props.deleteMovie(id);
+        console.log("i am in handle delete");
+    }
 
     render() {
         const {history} = this.props ;
@@ -30,8 +43,8 @@ class movieContent extends React.Component {
                     </div>
                     <div className="content-list d-flex">
                         {
-                            this.props.stateMovies.map((movie) => {
-                                return <MovieComponent movie={movie} />
+                            this.props.movies.map((movie) => {
+                                return <MovieComponent movie={movie} method={this.handleDelete} />
                             })
                         }
                     </div>
@@ -43,4 +56,12 @@ class movieContent extends React.Component {
         )
     }
 }
-export default movieContent;
+const mapMovieStateProps = (state) => {
+    console.log("i come inside every time");
+    return {
+        movies:state.movies
+    }
+}
+const mapDispatchToProps = { deleteMovie }
+
+export default connect(mapMovieStateProps,mapDispatchToProps)(movieContent);

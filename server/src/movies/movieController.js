@@ -39,12 +39,14 @@ async function getMovieById(id) {
 
 async function removeMovieById(id) {
   try {
+    console.log('request come in remove id');
     const connection = await con.getConnection();
     const formatQuery = await connection.format('delete from movies where movieid = ?', [id]);
     const result = await connection.query(formatQuery);
     await connection.end();
     return result;
   } catch (error) {
+    console.log(`request in catch${error}`);
     return error;
   }
 }

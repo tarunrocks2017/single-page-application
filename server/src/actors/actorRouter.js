@@ -12,9 +12,9 @@ router.get('/actors', async (req, res) => {
   }
 });
 
-router.post('/deleteActor', async (req, res) => {
+router.delete('/deleteActor/:id', async (req, res) => {
   try {
-    const deletedRow = await controller.removeActorById(req.body.id);
+    const deletedRow = await controller.removeActorById(req.params.id);
     if (deletedRow.affectedRows > 0) {
       res.json(true);
     } else {
@@ -36,6 +36,7 @@ router.get('/getOptions', async (req, res) => {
 
 router.post('/addActor', async (req, res) => {
   try {
+    console.log('request come here first ......');
     const actor = {
       actorname: req.body.actorname,
       movieid: parseInt(req.body.movieid, 10),
@@ -43,9 +44,11 @@ router.post('/addActor', async (req, res) => {
       image_url: req.body.image,
       totalmovies: req.body.totalmovies,
     };
+    console.log(actor);
     const result = await controller.addActor(actor);
     if (result.affectedRows > 0) {
       const newlyAddedActor = await controller.getNewlyAddedActor(actor.actorname);
+      console.log(newlyAddedActor[0]);
       res.json(newlyAddedActor);
     } else {
       res.json(false);
@@ -60,7 +63,8 @@ router.post('/editActor', async (req, res) => {
   res.json(result);
 });
 
-router.post('/updateActor', async (req, res) => {
+router.put('/updateActor', async (req, res) => {
+  console.log('request in update actor');
   const actor = {
     actorname: req.body.actorname,
     movieid: parseInt(req.body.movieid, 10),
