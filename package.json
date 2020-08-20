@@ -28,7 +28,7 @@
     "eslint-plugin-import": "^2.14.0"
   },
   "dependencies": {
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
     "eslint-watch": "^4.0.2",
